@@ -21,7 +21,7 @@ import org.springframework.integration.jms.dsl.Jms;
 @EnableBatchIntegration
 public class MasterConfiguration {
 
-	private static final int GRID_SIZE = 3;
+	private static final int GRID_SIZE = 100;
 
 	private final JobBuilderFactory jobBuilderFactory;
 
