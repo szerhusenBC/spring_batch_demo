@@ -13,14 +13,15 @@ import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@org.springframework.web.bind.annotation.RestController
-public class RestController {
+@RestController
+public class JobStartRestController {
 
    private final JobLauncher jobLauncher;
    private final Job remotePartitioningJob;
 
-   public RestController(JobLauncher jobLauncher, Job remotePartitioningJob) {
+   public JobStartRestController(JobLauncher jobLauncher, Job remotePartitioningJob) {
       this.jobLauncher = jobLauncher;
       this.remotePartitioningJob = remotePartitioningJob;
    }
@@ -28,7 +29,7 @@ public class RestController {
    @GetMapping("/startjob")
    public ResponseEntity<String> startJob() {
       JobParameters jobParameters = new JobParametersBuilder()
-            // siehe https://stackoverflow.com/questions/22455739/spring-batch-a-job-instance-already-exists-jobinstancealreadycompleteexceptio
+            // look at https://stackoverflow.com/questions/22455739/spring-batch-a-job-instance-already-exists-jobinstancealreadycompleteexceptio
             .addDate("date", new Date())
             .toJobParameters();
 
@@ -38,6 +39,6 @@ public class RestController {
          return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
       }
 
-      return new ResponseEntity<>("Job wurde ausgeführt", HttpStatus.OK);
+      return new ResponseEntity<>("Job executed", HttpStatus.OK);
    }
 }
