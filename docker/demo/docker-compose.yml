@@ -1,0 +1,67 @@
+version: "3.6"
+
+networks:
+   spring_batch_demo:
+
+services:
+   demo-postgres:
+      image: postgres:11-alpine
+      container_name: demo-postgres
+      ports:
+         - 5432:5432
+      volumes:
+         - ./postgres/data:/var/lib/postgresql/data
+      environment:
+         POSTGRES_DB: batchdemo
+         POSTGRES_USER: batchdemo
+         POSTGRES_PASSWORD: batchdemo
+      networks:
+         - spring_batch_demo
+
+   demo-activemq:
+      image: webcenter/activemq:5.14.3
+      container_name: demo-activemq
+      ports:
+         # mqtt
+         - 1883:1883
+         # amqp
+         - 5672:5672
+         # ui
+         - 8161:8161
+         # stomp
+         - 61613:61613
+         # ws
+         - 61614:61614
+         # jms
+         - 61616:61616
+      volumes:
+         - ./activemq/data:/data/activemq
+         - ./activemq/logs:/var/log/activemq
+      networks:
+         - spring_batch_demo
+
+   demo-master:
+      image: hubae/spring_batch_demo_master:latest
+      container_name: demo-master
+      ports:
+         - 8080:8080
+      networks:
+         - spring_batch_demo
+
+   demo-slave-1:
+      image: hubae/spring_batch_demo_slave:latest
+      container_name: demo-slave-1
+      networks:
+         - spring_batch_demo
+
+   demo-slave-2:
+      image: hubae/spring_batch_demo_slave:latest
+      container_name: demo-slave-2
+      networks:
+         - spring_batch_demo
+
+   demo-slave-3:
+      image: hubae/spring_batch_demo_slave:latest
+      container_name: demo-slave-3
+      networks:
+         - spring_batch_demo

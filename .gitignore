@@ -20,5 +20,7 @@ target/
 .vscode/
 
 ### Docker ###
-/docker/activemq
-/docker/postgres
+/docker/dev/activemq
+/docker/dev/postgres
+/docker/demo/activemq
+/docker/demo/postgres

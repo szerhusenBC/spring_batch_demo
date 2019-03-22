@@ -1,9 +1,9 @@
 version: "3.6"
 
 services:
-   demo-postgres:
+   dev-postgres:
       image: postgres:11-alpine
-      container_name: demo-postgres
+      container_name: dev-postgres
       ports:
          - 5432:5432
       volumes:
@@ -13,22 +13,22 @@ services:
          POSTGRES_USER: batchdemo
          POSTGRES_PASSWORD: batchdemo
 
-   demo-activemq:
+   dev-activemq:
       image: webcenter/activemq:5.14.3
-      container_name: demo-activemq
+      container_name: dev-activemq
       ports:
          # mqtt
-         - "1883:1883"
+         - 1883:1883
          # amqp
-         - "5672:5672"
+         - 5672:5672
          # ui
-         - "8161:8161"
+         - 8161:8161
          # stomp
-         - "61613:61613"
+         - 61613:61613
          # ws
-         - "61614:61614"
+         - 61614:61614
          # jms
-         - "61616:61616"
+         - 61616:61616
       volumes:
         - ./activemq/data:/data/activemq
         - ./activemq/logs:/var/log/activemq
