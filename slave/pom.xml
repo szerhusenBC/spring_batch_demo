@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>de.ewe.tk.replicare.batchdemo</groupId>
+		<groupId>org.zerhusen.batchdemo</groupId>
 		<artifactId>spring_batch_demo</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<groupId>de.ewe.tk.replicare.batchdemo</groupId>
+	<groupId>org.zerhusen.batchdemo</groupId>
 	<artifactId>slave</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>slave</name>
