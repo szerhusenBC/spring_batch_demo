@@ -8,7 +8,7 @@ a [sample by Spring](https://github.com/spring-projects/spring-batch/tree/master
 
 Here is an overview of the components in the Docker composing:
 
-![Composing overview](docs/ovoerview.png?raw=true "Composing overview")
+![Composing overview](docs/overview.png?raw=true "Composing overview")
 
 ## Requirements
 This demo is build with **Maven 3.x**, **Java 11** and **Docker**.
