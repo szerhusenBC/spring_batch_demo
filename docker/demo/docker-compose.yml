@@ -48,20 +48,20 @@ services:
       networks:
          - spring_batch_demo
 
-   demo-slave-1:
-      image: hubae/spring_batch_demo_slave:latest
-      container_name: demo-slave-1
+   demo-worker-1:
+      image: hubae/spring_batch_demo_worker:latest
+      container_name: demo-worker-1
       networks:
          - spring_batch_demo
 
-   demo-slave-2:
-      image: hubae/spring_batch_demo_slave:latest
-      container_name: demo-slave-2
+   demo-worker-2:
+      image: hubae/spring_batch_demo_worker:latest
+      container_name: demo-worker-2
       networks:
          - spring_batch_demo
 
-   demo-slave-3:
-      image: hubae/spring_batch_demo_slave:latest
-      container_name: demo-slave-3
+   demo-worker-3:
+      image: hubae/spring_batch_demo_worker:latest
+      container_name: demo-worker-3
       networks:
          - spring_batch_demo

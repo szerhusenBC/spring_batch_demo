@@ -7,14 +7,13 @@
       <groupId>de.ewe.tk.replicare.batchdemo</groupId>
       <artifactId>spring_batch_demo</artifactId>
       <version>0.0.1-SNAPSHOT</version>
-      <!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
    </parent>
 
    <groupId>de.ewe.tk.replicare.batchdemo</groupId>
    <artifactId>master</artifactId>
    <version>0.0.1-SNAPSHOT</version>
    <name>master</name>
-   <description>Demo project for Spring Boot</description>
+   <description>The master application for remote partitioning</description>
 
    <dependencies>
       <dependency>

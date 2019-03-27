@@ -7,7 +7,8 @@
    <artifactId>spring_batch_demo</artifactId>
    <version>0.0.1-SNAPSHOT</version>
    <name>spring_batch_demo</name>
-   <description>Demo project for Spring Boot</description>
+
+   <description>Demo project for Spring Batch with remote partitioning</description>
 
    <packaging>pom</packaging>
 
@@ -24,7 +25,7 @@
 
    <modules>
       <module>master</module>
-      <module>slave</module>
+      <module>worker</module>
    </modules>
 
    <dependencyManagement>
