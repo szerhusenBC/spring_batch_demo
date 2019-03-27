@@ -1,4 +1,4 @@
-package de.ewe.tk.replicare.batchdemo.worker.configuration;
+package de.ewe.tk.replicare.batchdemo.slave.configuration;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;

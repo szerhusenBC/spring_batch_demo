@@ -1,13 +1,13 @@
-package de.ewe.tk.replicare.batchdemo.worker;
+package de.ewe.tk.replicare.batchdemo.slave;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WorkerApplication {
+public class SlaveApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WorkerApplication.class, args);
+		SpringApplication.run(SlaveApplication.class, args);
 	}
 
 }

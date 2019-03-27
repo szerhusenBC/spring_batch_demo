@@ -1,4 +1,4 @@
-package de.ewe.tk.replicare.batchdemo.worker.configuration;
+package de.ewe.tk.replicare.batchdemo.slave.configuration;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.batch.core.Step;
@@ -19,12 +19,12 @@ import org.springframework.integration.jms.dsl.Jms;
 @Configuration
 @EnableBatchProcessing
 @EnableBatchIntegration
-public class WorkerConfiguration {
+public class SlaveConfiguration {
 
-   private final RemotePartitioningWorkerStepBuilderFactory workerStepBuilderFactory;
+   private final RemotePartitioningWorkerStepBuilderFactory slaveStepBuilderFactory;
 
-   public WorkerConfiguration(RemotePartitioningWorkerStepBuilderFactory workerStepBuilderFactory) {
-      this.workerStepBuilderFactory = workerStepBuilderFactory;
+   public SlaveConfiguration(RemotePartitioningWorkerStepBuilderFactory slaveStepBuilderFactory) {
+      this.slaveStepBuilderFactory = slaveStepBuilderFactory;
    }
 
    /*
@@ -44,11 +44,11 @@ public class WorkerConfiguration {
    }
 
    /*
-    * Configure the worker step
+    * Configure the slave step
     */
    @Bean
-   public Step workerStep() {
-      return this.workerStepBuilderFactory.get("workerStep")
+   public Step slaveStep() {
+      return this.slaveStepBuilderFactory.get("slaveStep")
             .inputChannel(requests())
             .tasklet(tasklet(null))
             .build();

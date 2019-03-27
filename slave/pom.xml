@@ -10,10 +10,10 @@
 	</parent>
 
 	<groupId>de.ewe.tk.replicare.batchdemo</groupId>
-	<artifactId>worker</artifactId>
+	<artifactId>slave</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>worker</name>
-	<description>The worker application for remote partitioning</description>
+	<name>slave</name>
+	<description>The slave application for remote partitioning</description>
 
 	<dependencies>
 		<dependency>
@@ -84,7 +84,7 @@
 							<goal>build</goal>
 						</goals>
 						<configuration>
-							<imageName>hubae/spring_batch_demo_worker</imageName>
+							<imageName>hubae/spring_batch_demo_slave</imageName>
 							<baseImage>openjdk:11-oracle</baseImage>
 							<imageTags>
 								<imageTag>${project.version}</imageTag>

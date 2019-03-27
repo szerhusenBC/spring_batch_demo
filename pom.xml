@@ -25,7 +25,7 @@
 
    <modules>
       <module>master</module>
-      <module>worker</module>
+      <module>slave</module>
    </modules>
 
    <dependencyManagement>
