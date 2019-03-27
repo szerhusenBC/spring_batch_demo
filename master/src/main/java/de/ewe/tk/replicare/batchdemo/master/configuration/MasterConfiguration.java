@@ -57,7 +57,7 @@ public class MasterConfiguration {
 	@Bean
 	public Step masterStep() {
 		return this.masterStepBuilderFactory.get("masterStep")
-				.partitioner("workerStep", new BasicPartitioner())
+				.partitioner("slaveStep", new BasicPartitioner())
 				.gridSize(GRID_SIZE)
 				.outputChannel(requests())
 				.build();

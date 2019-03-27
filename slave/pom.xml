@@ -48,6 +48,7 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -56,6 +57,11 @@
 		<dependency>
 			<groupId>org.springframework.batch</groupId>
 			<artifactId>spring-batch-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -74,34 +80,14 @@
 
 			<plugin>
 				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>${docker-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>build-image</id>
-						<phase>package</phase>
-						<goals>
-							<goal>build</goal>
-						</goals>
-						<configuration>
-							<imageName>hubae/spring_batch_demo_slave</imageName>
-							<baseImage>openjdk:11-oracle</baseImage>
-							<imageTags>
-								<imageTag>${project.version}</imageTag>
-								<imageTag>latest</imageTag>
-							</imageTags>
-							<entryPoint>["java", "-jar", "/${project.build.finalName}.jar", "--spring.profiles.active=docker"]</entryPoint>
-							<!-- copy the service's jar file from target into the root directory of the image -->
-							<resources>
-								<resource>
-									<targetPath>/</targetPath>
-									<directory>${project.build.directory}</directory>
-									<include>${project.build.finalName}.jar</include>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<configuration>
+					<repository>hubae/spring_batch_demo_slave</repository>
+					<contextDirectory>${project.basedir}</contextDirectory>
+					<buildArgs>
+						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
+				</configuration>
 			</plugin>
 
 		</plugins>

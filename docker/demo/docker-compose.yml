@@ -9,8 +9,6 @@ services:
       container_name: demo-postgres
       ports:
          - 5432:5432
-      volumes:
-         - ./postgres/data:/var/lib/postgresql/data
       environment:
          POSTGRES_DB: batchdemo
          POSTGRES_USER: batchdemo
@@ -35,7 +33,6 @@ services:
          # jms
          - 61616:61616
       volumes:
-         - ./activemq/data:/data/activemq
          - ./activemq/logs:/var/log/activemq
       networks:
          - spring_batch_demo
@@ -48,20 +45,14 @@ services:
       networks:
          - spring_batch_demo
 
-   demo-worker-1:
-      image: hubae/spring_batch_demo_worker:latest
-      container_name: demo-worker-1
+   demo-slave-1:
+      image: hubae/spring_batch_demo_slave:latest
+      container_name: demo-slave-1
       networks:
          - spring_batch_demo
 
-   demo-worker-2:
-      image: hubae/spring_batch_demo_worker:latest
-      container_name: demo-worker-2
-      networks:
-         - spring_batch_demo
-
-   demo-worker-3:
-      image: hubae/spring_batch_demo_worker:latest
-      container_name: demo-worker-3
+   demo-slave-2:
+      image: hubae/spring_batch_demo_slave:latest
+      container_name: demo-slave-2
       networks:
          - spring_batch_demo
